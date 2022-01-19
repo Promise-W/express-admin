@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "node-dev ./bin/www"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-jwt": "^6.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "node-dev": "^7.1.0"
+  }
+}
