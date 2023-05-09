@@ -12,7 +12,7 @@ class modal {
          if (xhr.readyState === 4 && xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
             var response = json.choices[0].text;
-            console.log('ai response', response)
+            console.log(`ai response[${new Date().toLocaleString()}]`, response)
 
             resolve(response)
          }
@@ -29,7 +29,7 @@ class modal {
       });
       xhr.send(data);
 
-      console.log('ai request', data);
+      console.log(`ai request[${new Date().toLocaleString()}] `, data);
     })
   }
 }
