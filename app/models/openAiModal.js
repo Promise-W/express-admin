@@ -1,13 +1,14 @@
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const aiCfg = require('../../config/aiCfg.js')
+const { url, apiKey } = aiCfg['gpt3.5']
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 
 class modal {
   getAiData(prompt) {
     return new Promise((resolve, reject) => {
       var xhr = new XMLHttpRequest();
-      var url = "https://api.openai.com/v1/completions";
       xhr.open("POST", url, true);
       xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer xxx");
+      xhr.setRequestHeader("Authorization", `Bearer ${apiKey}`);
       xhr.onreadystatechange = function() {
          if (xhr.readyState === 4 && xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
@@ -29,7 +30,7 @@ class modal {
       });
       xhr.send(data);
 
-      console.log(`ai request[${new Date().toLocaleString()}] `, data);
+      console.log(`gpt-ai request[${new Date().toLocaleString()}] `, data);
     })
   }
 }
