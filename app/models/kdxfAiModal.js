@@ -83,7 +83,7 @@ class modal {
             }
         }
     }
-    console.log(`gpt-ai request[${new Date().toLocaleString()}] `, JSON.stringify(params));
+    console.log(`keDaXunFei-ai request[${new Date().toLocaleString()}] `, JSON.stringify(params));
     this.ttsWS.send(JSON.stringify(params))
   }
 }
