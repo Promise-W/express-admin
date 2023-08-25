@@ -1,11 +1,12 @@
 exports.getAiData = function (req, res) {
-  const aiType = Number(req.query.aiType || 1) // ai模型类型
+  const aiType = req.body.aiType || 'ali' // ai模型类型
 
   let AiModal = null
-  if (aiType === 1) AiModal = require('../models/openAiModal') // gpt
-  if (aiType === 2) AiModal = require('../models/aliAiModal') // ali
+  if (aiType === 'gpt') AiModal = require('../models/openAiModal') // gpt
+  if (aiType === 'ali') AiModal = require('../models/aliAiModal') // ali
+  if (aiType === 'keDa') AiModal = require('../models/kdxfAiModal') // 科大讯飞
   
-  AiModal.getAiData(req.query.prompt).then(aiData => {
+  AiModal.getAiData(req.body.prompt).then(aiData => {
     res.send(
       {
         data: { aiData },
