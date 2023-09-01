@@ -13,7 +13,7 @@ class modal {
          if (xhr.readyState === 4 && xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
             var response = json.choices[0].text;
-            console.log(`ai response[${new Date().toLocaleString()}]`, response)
+            console.log(`gpt-ai response[${new Date().toLocaleString()}]`, response)
 
             resolve(response)
          }

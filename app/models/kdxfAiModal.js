@@ -29,7 +29,7 @@ class modal {
           }
           if (jsonData.header.code === 0 && jsonData.header.status === 2) {
               ttsWS.close()
-              console.log(`ai response[${new Date().toLocaleString()}]`, total_res)
+              console.log(`keDaXunFei-ai response[${new Date().toLocaleString()}]`, total_res)
               resolve(total_res)
           }
         }

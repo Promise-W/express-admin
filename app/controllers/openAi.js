@@ -5,6 +5,7 @@ exports.getAiData = function (req, res) {
   if (aiType === 'gpt') AiModal = require('../models/openAiModal') // gpt
   if (aiType === 'ali') AiModal = require('../models/aliAiModal') // ali
   if (aiType === 'keDa') AiModal = require('../models/kdxfAiModal') // 科大讯飞
+  if (aiType === 'baidu') AiModal = require('../models/baiduAiModal') // 百度
   
   AiModal.getAiData(req.body.prompt).then(aiData => {
     res.send(
