@@ -17,7 +17,6 @@ module.exports = {
     url: 'https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant',
     appID: '',
     apiKey: '',
-    apiSecret: '',
-    appToken: ''
+    apiSecret: ''
   }
 }
