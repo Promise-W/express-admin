@@ -1,6 +1,6 @@
 var userModal = require('../models/userModal')
 
-exports.info = function (req, res) {
+exports.info = function(req, res) {
   // const rows = await userModal.getItem()
   // res.send(
   //   {
@@ -21,7 +21,7 @@ exports.info = function (req, res) {
   })
 }
 
-exports.list = function (req, res) {
+exports.list = function(req, res) {
   userModal.getList().then(rows => {
     res.send(
       {
@@ -29,6 +29,6 @@ exports.list = function (req, res) {
         status: 200,
         msg: 'List获取成功'
       }
-    );
+    )
   })
 }

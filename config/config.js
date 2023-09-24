@@ -1,11 +1,11 @@
 module.exports = {
   'development': {
-      'webPort': 6332
+    'webPort': 6332
   },
   'test': {
-      'webPort': 6332,
+    'webPort': 6332
   },
   'production': {
-      'webPort': 5233,
+    'webPort': 5233
   }
-};
+}

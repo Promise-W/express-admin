@@ -2,7 +2,7 @@ const WebSocket = require('ws')
 const CryptoJS = require('crypto-js')
 const aiCfg = require('../../config/aiCfg.js')
 
-class modal {
+class Modal {
   constructor() {
     const { url, appID, apiKey, apiSecret } = aiCfg['kdxf']
     this.url = url
@@ -20,7 +20,7 @@ class modal {
         this.ttsWS = ttsWS
         ttsWS.onopen = () => this.webSocketSend(prompt)
         ttsWS.onmessage = e => {
-          let jsonData = JSON.parse(e.data)
+          const jsonData = JSON.parse(e.data)
           if (jsonData.payload && jsonData.payload.choices && (jsonData.payload.choices.text || []).length) {
             total_res += jsonData.payload.choices.text[0].content || ''
           }
@@ -28,9 +28,9 @@ class modal {
             return console.error(`提问失败: ${jsonData.header.code}:${jsonData.header.message}`)
           }
           if (jsonData.header.code === 0 && jsonData.header.status === 2) {
-              ttsWS.close()
-              console.log(`keDaXunFei-ai response[${new Date().toLocaleString()}]`, total_res)
-              resolve(total_res)
+            ttsWS.close()
+            console.log(`keDaXunFei-ai response[${new Date().toLocaleString()}]`, total_res)
+            resolve(total_res)
           }
         }
         ttsWS.onerror = () => console.error(`WebSocket报错 详情查看：${encodeURI(url.replace('wss:', 'https:'))}`)
@@ -61,32 +61,31 @@ class modal {
   // websocket发送数据
   webSocketSend(prompt) {
     var params = {
-        "header": {
-            "app_id": this.appId,
-            // "uid": "fd3f47e4-d"
-        },
-        "parameter": {
-            "chat": {
-                "domain": "generalv2",
-                "temperature": 0.5,
-                "max_tokens": 1024
-            }
-        },
-        "payload": {
-            "message": {
-                "text": [
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ]
-            }
+      'header': {
+        'app_id': this.appId
+        // "uid": "fd3f47e4-d"
+      },
+      'parameter': {
+        'chat': {
+          'domain': 'generalv2',
+          'temperature': 0.5,
+          'max_tokens': 1024
         }
+      },
+      'payload': {
+        'message': {
+          'text': [
+            {
+              'role': 'user',
+              'content': prompt
+            }
+          ]
+        }
+      }
     }
-    console.log(`keDaXunFei-ai request[${new Date().toLocaleString()}] `, JSON.stringify(params));
+    console.log(`keDaXunFei-ai request[${new Date().toLocaleString()}] `, JSON.stringify(params))
     this.ttsWS.send(JSON.stringify(params))
   }
 }
 
-
-module.exports = new modal()
+module.exports = new Modal()

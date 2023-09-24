@@ -1,6 +1,6 @@
 var BookModal = require('../models/booksModal')
 
-exports.list = function (req, res) {
+exports.list = function(req, res) {
   BookModal.getList(req.data.data.userId).then(rows => {
     res.send(
       {
@@ -8,6 +8,6 @@ exports.list = function (req, res) {
         status: 200,
         msg: 'List获取成功'
       }
-    );
+    )
   })
 }

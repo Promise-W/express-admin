@@ -2,11 +2,11 @@ var db = require('../../lib/db/db')
 
 var UserSql = {
   insert: 'INSERT INTO user(id,name,pwd) VALUES(?,?,?)',
-  getList : 'SELECT * FROM user ',
+  getList: 'SELECT * FROM user ',
   getItem: 'SELECT * FROM user WHERE id = ? '
-};
+}
 
-class userModal {
+class UserModal {
   // async getList() {
   //   let rows = []
   //   await db.query(UserSql.getList, []).then(res => rows = res)
@@ -30,4 +30,4 @@ class userModal {
   }
 }
 
-module.exports = new userModal()
+module.exports = new UserModal()

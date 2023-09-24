@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "node-dev ./bin/www"
+    "dev": "node-dev ./bin/www",
+    "lint": "eslint --ext .js . --fix"
   },
   "dependencies": {
     "crypto-js": "^4.1.1",
@@ -15,6 +16,7 @@
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
+    "eslint": "^8.50.0",
     "node-dev": "^7.1.0"
   }
 }

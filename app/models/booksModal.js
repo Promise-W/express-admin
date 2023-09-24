@@ -1,9 +1,9 @@
 var db = require('../../lib/db/db')
 
-class modal {
+class Modal {
   getList(userId) {
     return db.query('select * from books where userId = ?', [userId])
   }
 }
 
-module.exports = new modal()
+module.exports = new Modal()

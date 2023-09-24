@@ -1,38 +1,37 @@
 const aiCfg = require('../../config/aiCfg.js')
 const { url, apiKey } = aiCfg.ali
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 
-class modal {
+class Modal {
   getAiData(prompt) {
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", url, true);
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.setRequestHeader("Authorization", `Bearer ${apiKey}`);
+      const xhr = new XMLHttpRequest()
+      xhr.open('POST', url, true)
+      xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.setRequestHeader('Authorization', `Bearer ${apiKey}`)
       xhr.onreadystatechange = function() {
-         if (xhr.readyState === 4 && xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText);
-            var response = json.output.text;
-            console.log(`ali-ai response[${new Date().toLocaleString()}]`, response)
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var json = JSON.parse(xhr.responseText)
+          var response = json.output.text
+          console.log(`ali-ai response[${new Date().toLocaleString()}]`, response)
 
-            resolve(response)
-         }
-      };
+          resolve(response)
+        }
+      }
 
       var data = JSON.stringify({
-        "input": { prompt },
-        "model": "qwen-v1"
-      });
+        'input': { prompt },
+        'model': 'qwen-v1'
+      })
 
-      xhr.send(data);
+      xhr.send(data)
 
-      console.log(`ali-ai request[${new Date().toLocaleString()}] `, data);
+      console.log(`ali-ai request[${new Date().toLocaleString()}] `, data)
     })
   }
 }
 
-module.exports = new modal()
-
+module.exports = new Modal()
 
 /*
 curl --location 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation' \
