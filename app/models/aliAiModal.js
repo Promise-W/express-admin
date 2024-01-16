@@ -21,7 +21,7 @@ class Modal {
 
       var data = JSON.stringify({
         'input': { prompt },
-        'model': 'qwen-v1'
+        'model': 'qwen-turbo' // qwen-plus
       })
 
       xhr.send(data)
@@ -38,7 +38,7 @@ curl --location 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-genera
 --header 'Authorization: Bearer $apiKey' \
 --header 'Content-Type: application/json' \
 --data '{
-    "model": "qwen-v1",
+    "model": "qwen-plus",
     "input":{
         "prompt":"哪个公园距离我最近",
         "history":[
