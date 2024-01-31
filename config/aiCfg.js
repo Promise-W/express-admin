@@ -8,7 +8,7 @@ module.exports = {
     apiKey: ''
   },
   'kdxf': {
-    url: 'wss://spark-api.xf-yun.com/v2.1/chat',
+    url: 'wss://spark-api.xf-yun.com/v3.5/chat',
     appID: '',
     apiKey: '',
     apiSecret: ''
